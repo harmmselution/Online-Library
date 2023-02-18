@@ -24,7 +24,6 @@ export function BookPage() {
   useEffect(() => {
     dispatch(fetchBook(id));
   }, [dispatch, id]);
-  console.log(bookCategory);
   return (
     <>
       <div className={styles.greyComponent}>
