@@ -1,0 +1,247 @@
+.navMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 279px;
+}
+.burgerCloseFiend {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 3;
+}
+.category {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  max-width: 263px;
+  letter-spacing: 0.1px;
+  /* main/dark */
+  display: inline;
+  color: #363636;
+  white-space: pre-wrap;
+  &:hover {
+    color: #ff5253;
+  }
+  cursor: pointer;
+}
+.activeCategory {
+  background: linear-gradient(233.73deg, #f83600 -16.08%, #f9d423 327.37%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.allBooks {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  /* identical to box height, or 156% */
+
+  letter-spacing: 0.1px;
+
+  /* main/dark */
+  width: 255px;
+  /* main/dark */
+  background: linear-gradient(231.58deg, #f83600 -53.35%, #f9d423 297.76%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  /* border-bottom: 1px solid #363636; */
+  cursor: pointer;
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    height: 1px;
+    margin-top: 10px;
+    background: linear-gradient(231.58deg, #f83600 -53.35%, #f9d423 297.76%);
+  }
+}
+.active {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  position: relative;
+  letter-spacing: 0.1px;
+
+  /* button / hover */
+
+  background: linear-gradient(231.58deg, #f83600 -53.35%, #f9d423 297.76%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  &::after {
+    content: '';
+    display: block;
+    height: 1px;
+    margin-top: 10px;
+    background: linear-gradient(231.58deg, #f83600 -53.35%, #f9d423 297.76%);
+    width: 255px;
+  }
+}
+.activeQuantity {
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height, or 171% */
+
+  letter-spacing: 0.1px;
+
+  /* main/dark */
+
+  color: #363636;
+}
+.quantity {
+  color: #a7a7a7;
+  padding-left: 5px;
+}
+.categoriesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.noContainer {
+  display: none;
+}
+.activeCategory span {
+  background: #363636;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 400;
+}
+.menuArrow {
+  position: absolute;
+  left: 220px;
+  top: 10px;
+  svg {
+    color: #ff740f;
+  }
+}
+.arrowD {
+  position: absolute;
+  left: 220px;
+  top: 10px;
+  svg {
+    color: #ff740f;
+  }
+  transform: rotate(180deg);
+}
+.showCase {
+  position: relative;
+  cursor: pointer;
+}
+.rotation {
+  transform: rotate(180deg);
+  position: absolute;
+  left: 220px;
+  top: 0px;
+  svg {
+    color: none;
+  }
+}
+
+@media (max-width: 990px) {
+  .navMenu {
+    display: none;
+    position: absolute;
+    top: 100px;
+  }
+  .navBurgerMenu {
+    background: black;
+    width: 505px;
+    background: #f9f9fa;
+    z-index: 10;
+    padding-top: 20px;
+
+    box-shadow: 0px 2px 4px rgba(191, 196, 201, 0.2), 0px 3px 4px rgba(191, 196, 201, 0.18),
+      0px 1px 5px rgba(191, 196, 201, 0.24);
+    border-radius: 10px;
+    display: flex;
+    position: absolute;
+    top: 100px;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 279px;
+    z-index: 5;
+    padding-bottom: 52px;
+  }
+  .navBurgerMenu .active {
+    padding-left: 32px;
+    padding-top: 32px;
+  }
+  .navBurgerMenu a {
+    padding-left: 52px;
+  }
+  .arrowDown {
+    position: absolute;
+    left: 220px;
+    top: 10px;
+    svg {
+      color: #ff740f;
+    }
+    transform: translate(180deg);
+  }
+  .navBurgerMenu .contract {
+    padding-left: 32px;
+  }
+  .navBurgerMenu .profile {
+    font-size: 18px;
+    padding-top: 32px;
+    border-top: 1px solid #bfc4c9;
+    cursor: pointer;
+    letter-spacing: 0.1px;
+    font-weight: 700;
+    margin-top: 52px;
+    color: #363636;
+    padding-left: 32px;
+  }
+  .navBurgerMenu .rules {
+    padding-left: 32px;
+  }
+  .navBurgerMenu .contract {
+    padding-top: 32px;
+  }
+}
+.rules {
+  font-weight: 700;
+  font-size: 18px;
+
+  /* identical to box height, or 156% */
+
+  letter-spacing: 0.1px;
+  padding-top: 26px;
+  /* main/dark */
+  cursor: pointer;
+  color: #363636;
+}
+.contract {
+  font-size: 18px;
+
+  cursor: pointer;
+  letter-spacing: 0.1px;
+  position: relative;
+  /* main/dark */
+  font-weight: 700;
+
+  color: #363636;
+}
+@media (max-width: 600px) {
+  .navBurgerMenu {
+    width: 288px;
+
+    left: 5%;
+  }
+}
+.bgLayer {
+  position: absolute;
+  inset: 0;
+}

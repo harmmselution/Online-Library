@@ -1,0 +1,28 @@
+.main {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-bottom: 62px;
+}
+
+@media (max-width: 788px) {
+  .mainContainer {
+    gap: 24px;
+  }
+  .main {
+    padding-top: 54px;
+  }
+}
+@media (max-width: 540px) {
+  .mainContainer {
+    gap: 19px;
+  }
+  .main {
+    padding-top: 32px;
+  }
+}/*# sourceMappingURL=Main.module.css.map */

@@ -1,0 +1,81 @@
+.rulesContainer {
+  display: flex;
+  flex-grow: 1;
+
+  padding-bottom: 62px;
+}
+.textHeader {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  /* identical to box height, or 125% */
+
+  letter-spacing: 0.1px;
+
+  /* main/dark */
+
+  color: #363636;
+}
+.allRules {
+  display: flex;
+  flex-direction: column;
+  padding-top: 32px;
+}
+.first {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* or 150% */
+
+  letter-spacing: 0.1px;
+
+  /* main/dark */
+
+  color: #363636;
+}
+.firstRules {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-left: 30px;
+  padding-top: 16px;
+}
+.subFirst {
+  font-size: 16px;
+  line-height: 24px;
+  /* or 150% */
+
+  letter-spacing: 0.1px;
+
+  /* main/dark */
+
+  color: #363636;
+}
+.subContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-left: 30px;
+}
+.subSubFirst {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-left: 30px;
+}
+@media (max-width: 768px) {
+  .rulesContainer {
+    display: flex;
+    flex-grow: 1;
+    padding-top: 54px;
+  }
+}
+
+@media (max-width: 320px) {
+  .rulesContainer {
+    display: flex;
+    flex-grow: 1;
+    padding-top: 48px;
+    padding-bottom: 24px;
+  }
+}
