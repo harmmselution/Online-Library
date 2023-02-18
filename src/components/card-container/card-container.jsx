@@ -15,8 +15,6 @@ export function CardContainer({ isPanel }) {
   useEffect(() => {
     dispatch(fetchBooks());
   }, [dispatch]);
-  console.log(allBooks, status);
-  console.log(allCategories);
   const { category } = useParams();
   const selectedCategory = allCategories.find((element) => element.path === category);
   const filteredBooks =
