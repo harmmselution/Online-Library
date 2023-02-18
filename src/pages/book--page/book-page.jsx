@@ -18,85 +18,87 @@ export function BookPage() {
   const onChangeRatesStatus = () => {
     dispatch(changeRatesStatus(!isRatesOpen));
   };
-  const { id } = useParams();
+  const { id, category } = useParams();
+  const bookCategory = category;
   const { book, status } = useSelector((state) => state.bookSlice);
   useEffect(() => {
     dispatch(fetchBook(id));
   }, [dispatch, id]);
-
+  console.log(bookCategory);
   return (
     <>
+      <div className={styles.greyComponent}>
+        <div className={styles.greyContainer}>
+          <p className={styles.greyText}>
+            {status === 'success' ? (
+              book.categories.map((category) => <span key={`${category} - ${book.id}`}>{category} книги</span>)
+            ) : (
+              <span> {bookCategory} книги</span>
+            )}
+            <span className={styles.greyChevron}> / </span> {book.title}
+          </p>
+        </div>
+      </div>
+
       {status === 'success' && (
         <>
-          <div className={styles.greyComponent}>
-            <div className={styles.greyContainer}>
-              <p className={styles.greyText}>
-                {book.categories.map((category) => (
-                  <span key={`${category} - ${book.id}`}>{category} книги</span>
-                ))}
-                <span className={styles.greyChevron}> / </span> {book.title}
-              </p>
+          <div className={styles.container}>
+            <div className={styles.book}>
+              {book.images.length > 1 ? (
+                <Slider gallery={book.images} />
+              ) : (
+                <img src={`https://strapi.cleverland.by${book.images[0].url}`} alt='' data-test-id='slide-big' />
+              )}
+            </div>
+            <div className={styles.title}>
+              <h2 className={styles.bookName}>{book.title}</h2>
+              {book.authors.map((author) => (
+                <p key={`${author} -  ${book.id}`} className={styles.author}>
+                  {author}, {book.issueYear}
+                </p>
+              ))}
+
+              <button type='button' className={book?.booking?.order ? styles.bookedButton : styles.orderButton}>
+                {book?.booking?.order ? `Занята до ${getShortDate(book.booking.dateOrder)}` : 'Забронировать'}
+              </button>
+            </div>
+            <div className={styles.about}>
+              <h3 className={styles.aboutBook}>О книге</h3>
+              <p className={styles.algoritm}>{book.description}</p>
             </div>
           </div>
-          <>
-            <div className={styles.container}>
-              <div className={styles.book}>
-                {book.images.length > 1 ? (
-                  <Slider gallery={book.images} />
-                ) : (
-                  <img src={`https://strapi.cleverland.by${book.images[0].url}`} alt='' data-test-id='slide-big' />
-                )}
-              </div>
-              <div className={styles.title}>
-                <h2 className={styles.bookName}>{book.title}</h2>
-                {book.authors.map((author) => (
-                  <p key={`${author} -  ${book.id}`} className={styles.author}>
-                    {author}, {book.issueYear}
-                  </p>
-                ))}
 
-                <button type='button' className={book?.booking?.order ? styles.bookedButton : styles.orderButton}>
-                  {book?.booking?.order ? `Занята до ${getShortDate(book.booking.dateOrder)}` : 'Забронировать'}
-                </button>
-              </div>
-              <div className={styles.about}>
-                <h3 className={styles.aboutBook}>О книге</h3>
-                <p className={styles.algoritm}>{book.description}</p>
-              </div>
+          <section className={book.images.length > 1 ? styles.rating : ''}>
+            <h3>Рейтинг</h3>
+            <div className={styles.imageContainer}>
+              {book.rating ? (
+                <>
+                  <Rating rating={book.rating} />
+                  <span className={styles.number}>{book.rating}</span>
+                </>
+              ) : (
+                <p className={styles.noRating}>ещё нет оценок</p>
+              )}
             </div>
-
-            <section className={book.images.length > 1 ? styles.rating : ''}>
-              <h3>Рейтинг</h3>
-              <div className={styles.imageContainer}>
-                {book.rating ? (
-                  <>
-                    <Rating rating={book.rating} />
-                    <span className={styles.number}>{book.rating}</span>
-                  </>
-                ) : (
-                  <p className={styles.noRating}>ещё нет оценок</p>
-                )}
-              </div>
-            </section>
-            <MoreInfo {...book} />
-            <section className={styles.ratingSection}>
-              <h3 className={styles.feedbacks}>
-                Отзывы <span className={styles.number2}>{book.comments ? book.comments.length : 0}</span>
-                <img
-                  src={arrow}
-                  alt='arrow'
-                  className={isRatesOpen ? `${styles.ratesArrow} ${styles.rotation}` : `${styles.ratesArrow}`}
-                  onClick={onChangeRatesStatus}
-                  aria-hidden='true'
-                  data-test-id='button-hide-reviews'
-                />
-              </h3>
-              {isRatesOpen && book.comments && <UserRates comments={book.comments} />}
-              <button type='button' className={styles.buttonReview} data-test-id='button-rating'>
-                Оценить книгу
-              </button>
-            </section>
-          </>
+          </section>
+          <MoreInfo {...book} />
+          <section className={styles.ratingSection}>
+            <h3 className={styles.feedbacks}>
+              Отзывы <span className={styles.number2}>{book.comments ? book.comments.length : 0}</span>
+              <img
+                src={arrow}
+                alt='arrow'
+                className={isRatesOpen ? `${styles.ratesArrow} ${styles.rotation}` : `${styles.ratesArrow}`}
+                onClick={onChangeRatesStatus}
+                aria-hidden='true'
+                data-test-id='button-hide-reviews'
+              />
+            </h3>
+            {isRatesOpen && book.comments && <UserRates comments={book.comments} />}
+            <button type='button' className={styles.buttonReview} data-test-id='button-rating'>
+              Оценить книгу
+            </button>
+          </section>
         </>
       )}
 
