@@ -7,7 +7,7 @@ import { fetchBooks } from '../../redux/books-slice';
 import { Loader } from '../loader/loader';
 
 export function CardContainer({ isPanel }) {
-  const { allBooks, status, filtered } = useSelector((state) => state.booksSlice);
+  const { allBooks, status } = useSelector((state) => state.booksSlice);
   const state = useSelector((state) => state.bookSlice);
   const { allCategories } = useSelector((state) => state.categoriesSlice);
   const bookState = state.status;
