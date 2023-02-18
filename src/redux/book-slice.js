@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const fetchBook = createAsyncThunk('book/fetchBook', async (id) => {
-  const { data } = await axios.get(`https://srapi.cleverland.by/api/books/${id}`);
+  const { data } = await axios.get(`https://strapi.cleverland.by/api/books/${id}`);
   return data;
 });
 
