@@ -1,0 +1,635 @@
+.greyContainer {
+  display: flex;
+  position: relative;
+  width: 1110px;
+}
+.greyComponent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  background: #f9f9fa;
+  margin-top: 44px;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+.chevronImg {
+  display: inline;
+}
+.bookedButton {
+  color: #a7a7a7;
+  border-radius: 30px;
+  text-align: center;
+  padding: 14px 95px 14px 95px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #bfc4c9;
+  background: #f9f9fa;
+}
+.rating {
+  margin-top: 120px;
+}
+.noRating {
+  line-height: 129%;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+}
+.text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  /* or 129% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.1px;
+
+  /* grey/black 40 */
+
+  color: #a7a7a7;
+}
+
+.aboutBook {
+  display: flex;
+
+  gap: 30px;
+}
+.bookName {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 125%;
+  letter-spacing: 0.1px;
+  color: #363636;
+}
+.orderContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  float: right;
+}
+.author {
+  font-size: 18px;
+  line-height: 28px;
+  /* identical to box height, or 156% */
+  font-weight: 700;
+  letter-spacing: 0.1px;
+
+  padding-top: 24px;
+  padding-bottom: 32px;
+
+  color: #a7a7a7;
+}
+.ratingSection {
+  padding-bottom: 42px;
+}
+.orderButton {
+  background: linear-gradient(231.58deg, #f83600 -53.35%, #f9d423 297.76%);
+  border-radius: 30px;
+  cursor: pointer;
+  text-align: center;
+  padding: 14px 95px 14px 95px;
+  max-width: 320px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+.description {
+  padding-top: 32px;
+  width: 635px;
+}
+.about {
+  padding-top: 42px;
+  padding-bottom: 32px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+}
+.algoritm {
+  font-size: 16px;
+  line-height: 150%;
+  /* or 150% */
+  font-weight: 400;
+  letter-spacing: 0.1px;
+
+  padding-top: 32px;
+  color: #363636;
+}
+.book {
+  max-width: 445px;
+  max-height: 593px;
+  border: 1px solid #a7a7a7;
+  border-radius: 10px;
+  img {
+    max-height: 593px;
+  }
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: grid;
+  gap: 20px;
+  margin-top: 42px;
+  padding-bottom: 42px;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(2);
+    grid-template-columns: 445px 635px;
+  }
+  .book {
+    grid-area: 1 / 1 / 3 / 2;
+  }
+  .title {
+    grid-area: 1 / 2 / 2 / 3;
+  }
+  .about {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+}
+
+@media (max-width: 1164px) and (min-width: 564px) {
+  .container {
+  }
+  .book {
+    grid-area: 1 / 1 / 3 / 2;
+  }
+  .title {
+    grid-area: 1 / 2 / 2 / 3;
+  }
+  .about {
+    grid-area: 3 / 1 / 4 / 3;
+  }
+  .aboutBook {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.book {
+  object-fit: cover;
+}
+.aboutBook {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+}
+@media (max-width: 788px) {
+  .bookName {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    /* or 125% */
+
+    letter-spacing: 0.1px;
+  }
+  .author {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .orderButton {
+    max-width: 300px;
+  }
+  .aboutBook {
+    padding-top: 0;
+  }
+  .about {
+    padding-top: 8px;
+  }
+  .container {
+    gap: 32px;
+  }
+}
+@media (min-width: 461px) and (max-width: 560px) {
+  .greyContainer {
+    max-width: 425px;
+  }
+}
+@media (max-width: 460px) {
+  .greyContainer {
+    max-width: 288px;
+  }
+  .feedbacks {
+    width: 288px;
+  }
+}
+@media (max-width: 663px) {
+  .container {
+    margin-top: 20px;
+  }
+  .book {
+    max-width: 188px;
+    max-height: 259px;
+  }
+  .bookName {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    /* or 156% */
+
+    letter-spacing: 0.1px;
+  }
+  .author {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    padding-top: 8px;
+    padding-bottom: 42px;
+  }
+  .orderButton {
+    max-width: 288px;
+    max-height: 40px;
+    align-items: center;
+  }
+  .about {
+    padding-top: 20px;
+  }
+  .aboutBook {
+    padding-top: 0;
+  }
+}
+@media (max-width: 1180px) {
+  .bookName {
+    width: 300px;
+  }
+  .algoritm {
+    max-width: 970px;
+  }
+}
+@media (max-width: 1185px) {
+  .rating {
+    margin-top: 0px;
+  }
+}
+@media (max-width: 460px) {
+  .book {
+    justify-self: center;
+  }
+  .title {
+    margin-top: -15px;
+  }
+}
+.imageContainer {
+  display: flex;
+  gap: 16px;
+  border-top: 1px solid #ebebeb;
+  width: 350px;
+
+  padding-top: 20px;
+  margin-top: 16px;
+}
+.imageContainer1 {
+  display: flex;
+  gap: 16px;
+  width: 350px;
+  margin-top: 16px;
+}
+
+.number {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  /* identical to box height, or 156% */
+
+  letter-spacing: 0.1px;
+
+  /* main/dark */
+  margin-left: 10px;
+  color: #363636;
+}
+.info {
+  display: flex;
+  gap: 146px;
+  padding-bottom: 62px;
+}
+.leftInfo {
+  padding-top: 32px;
+  display: flex;
+  gap: 70px;
+}
+.leftContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.greyChevron {
+  padding: 0px 10px 0px 10px;
+  font-weight: 700;
+}
+.greyText {
+  font-size: 14px;
+  line-height: 21px;
+
+  align-items: center;
+  letter-spacing: 0.1px;
+
+  /* grey/black 40 */
+
+  color: #a7a7a7;
+}
+.type {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.1px;
+
+  /* grey/black 40 */
+
+  color: #a7a7a7;
+}
+.typeName {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #363636;
+}
+.rightInfo {
+  display: flex;
+  gap: 72px;
+  padding-top: 32px;
+}
+.moreInfo {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ebebeb;
+  max-width: 350px;
+  padding-top: 67px;
+}
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rightContainer1 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 140px;
+}
+.number2 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height, or 171% */
+
+  letter-spacing: 0.1px;
+
+  /* grey/black 40 */
+
+  color: #a7a7a7;
+}
+.user {
+  display: flex;
+  gap: 24px;
+  padding-top: 20px;
+  align-items: center;
+}
+.userFio {
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.1px;
+
+  color: #727272;
+}
+.date {
+  font-size: 16px;
+  line-height: 24px;
+
+  letter-spacing: 0.1px;
+
+  color: #727272;
+}
+
+.feedback {
+  padding-top: 19px;
+  padding-bottom: 42px;
+  max-width: 730px;
+  font-size: 16px;
+  line-height: 24px;
+  /* or 150% */
+
+  letter-spacing: 0.1px;
+
+  /* main/dark */
+
+  color: #363636;
+}
+.buttonReview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(233.73deg, #f83600 -16.08%, #f9d423 327.37%);
+  border-radius: 30px;
+  border: none;
+  width: 350px;
+  height: 52px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  margin-top: 42px;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+@media (max-width: 990px) {
+  .info {
+    gap: 40px;
+  }
+  .rightInfo {
+    gap: 34px;
+  }
+  .leftInfo {
+    gap: 33px;
+  }
+  .type {
+    font-size: 14px;
+  }
+  .typeName {
+    font-size: 14px;
+  }
+  .genre {
+    padding-bottom: 28px;
+    font-size: 14px;
+  }
+  .number2 {
+    display: none;
+  }
+  .buttonReview {
+    width: 100%;
+  }
+}
+.genre {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.1px;
+
+  /* grey/black 40 */
+
+  color: #a7a7a7;
+}
+.feedbacks {
+  padding-bottom: 16px;
+  position: relative;
+}
+
+@media (max-width: 670px) {
+  .info {
+    flex-wrap: wrap;
+  }
+  .imageContainer {
+    border: none;
+    width: auto;
+  }
+  .imageContainer1 {
+    width: auto;
+  }
+  .user {
+    display: grid;
+    gap: 0;
+  }
+}
+@media (max-width: 1130px) {
+  .greyContainer {
+    width: 970px;
+  }
+}
+@media (max-width: 990px) {
+  .greyContainer {
+    width: 768px;
+  }
+}
+@media (max-width: 840px) {
+  .greyContainer {
+    width: 640px;
+  }
+}
+
+@media (min-width: 683px) and (max-width: 768px) {
+  .greyContainer {
+    width: 640px;
+  }
+  .greyComponent {
+    height: 88px;
+  }
+  .book {
+    width: 136px;
+    height: 198px;
+  }
+  .container {
+    display: grid;
+    gap: 20px;
+    margin-top: 42px;
+    padding-bottom: 42px;
+    grid-template-columns: 136px auto;
+  }
+  .moreInfo {
+    width: 305px;
+  }
+  .imageContainer {
+    width: 305px;
+  }
+  .feedbacks {
+    width: 305px;
+  }
+  .ratingSection {
+    padding-bottom: 48px;
+  }
+}
+@media (max-width: 681px) {
+  .greyContainer {
+    width: 520px;
+  }
+}
+@media (max-width: 320px) {
+  .greyContainer {
+    width: 288px;
+  }
+  .info {
+    gap: 0px;
+  }
+  .moreInfo {
+    padding-top: 28px;
+  }
+  .greyComponent {
+    height: 92px;
+  }
+  .book {
+    width: 188px;
+    height: 260px;
+  }
+  .container {
+    grid-template-columns: auto;
+  }
+  .orderButton {
+    font-size: 12px;
+  }
+  .buttonReview {
+    font-size: 12px;
+    letter-spacing: 0.2px;
+  }
+  .ratingSection {
+    padding-bottom: 20px;
+  }
+  .imageContainer {
+    img {
+      width: 28px;
+      height: 28px;
+    }
+    margin-top: 0px;
+  }
+}
+.ratesArrow {
+  position: absolute;
+  top: 0px;
+  left: 120px;
+  cursor: pointer;
+}
+.rotation {
+  transform: rotate(180deg);
+}
+.rateContainer {
+  &::before {
+    content: '';
+    display: block;
+    height: 1px;
+    background: #ebebeb;
+    max-width: 350px;
+  }
+}
+@media (max-width: 500px) {
+  .bookedButton {
+    font-size: 11px;
+  }
+}

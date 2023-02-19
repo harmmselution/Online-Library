@@ -1,0 +1,126 @@
+.navMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 279px;
+}
+
+.category {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  max-width: 263px;
+  letter-spacing: 0.1px;
+  /* main/dark */
+  color: #363636;
+  white-space: pre-wrap;
+  cursor: pointer;
+}
+.category:hover {
+  color: #ff5253;
+}
+
+.activeCategory {
+  background: linear-gradient(233.73deg, #f83600 -16.08%, #f9d423 327.37%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.allBooks {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  /* identical to box height, or 156% */
+  letter-spacing: 0.1px;
+  /* main/dark */
+  width: 255px;
+  /* main/dark */
+  background: linear-gradient(231.58deg, #f83600 -53.35%, #f9d423 297.76%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  /* border-bottom: 1px solid #363636; */
+  cursor: pointer;
+  position: relative;
+}
+.allBooks::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: 10px;
+  background: linear-gradient(231.58deg, #f83600 -53.35%, #f9d423 297.76%);
+}
+
+.active {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  /* identical to box height, or 156% */
+  letter-spacing: 0.1px;
+  /* button / hover */
+  background: linear-gradient(231.58deg, #f83600 -53.35%, #f9d423 297.76%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+.active::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: 10px;
+  background: linear-gradient(231.58deg, #f83600 -53.35%, #f9d423 297.76%);
+  width: 255px;
+}
+
+.activeQuantity {
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height, or 171% */
+  letter-spacing: 0.1px;
+  /* main/dark */
+  color: #363636;
+}
+
+.quantity {
+  color: #a7a7a7;
+  padding-left: 5px;
+}
+
+.activeCategory span {
+  background: #363636;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 400;
+}
+
+@media (max-width: 990px) {
+  .navMenu {
+    display: none;
+  }
+}
+.rules {
+  font-weight: 700;
+  font-size: 18px;
+  /* identical to box height, or 156% */
+  letter-spacing: 0.1px;
+  padding-top: 26px;
+  /* main/dark */
+  cursor: pointer;
+  color: #363636;
+}
+
+.contract {
+  font-size: 18px;
+  /* identical to box height, or 156% */
+  cursor: pointer;
+  letter-spacing: 0.1px;
+  /* main/dark */
+  font-weight: 700;
+  color: #363636;
+}/*# sourceMappingURL=NavMenu.module.css.map */

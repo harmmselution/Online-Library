@@ -1,0 +1,130 @@
+.errorContainer {
+  position: absolute;
+  max-width: 1110px;
+  background: #feebea;
+  border: 1.5px solid #f42c4f;
+  border-radius: 5px;
+  top: 65px;
+  z-index: 20;
+  margin: 0 auto;
+}
+.errorContent {
+  display: flex;
+  align-items: center;
+  padding: 24px;
+  .closeError {
+    cursor: pointer;
+  }
+}
+
+.textError {
+  margin-left: 40px;
+  margin-right: 380px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  letter-spacing: 0.1px;
+
+  /* main/dark */
+
+  color: #363636;
+}
+// @media (max-width: 1150px) {
+//   .errorContainer {
+//     // width: 640px;
+//     margin-left: 0px;
+//     top: 60px;
+//   }
+//   .textError {
+//     margin-right: 20px;
+//     margin-left: 20px;
+//     font-size: 14px;
+//   }
+//   .closeError {
+//     position: absolute;
+//     right: 15px;
+//     top: 25px;
+//     width: 16px;
+//     height: 16px;
+//   }
+// }
+
+// @media (max-width: 700px) {
+//   .errorContent {
+//     padding: 5px;
+//   }
+//   .errorContainer {
+//     // width: 280px;
+//     margin-left: 0px;
+//     top: 60px;
+//   }
+//   .textError {
+//     margin-right: 20px;
+//     margin-left: 20px;
+//     font-size: 14px;
+//   }
+//   .closeError {
+//     position: absolute;
+//     right: 15px;
+//     top: 25px;
+//     width: 16px;
+//     height: 16px;
+//   }
+// }
+// @media (max-width: 1150px) {
+//   .errorContainer {
+//     margin-left: -250px;
+//   }
+// }
+@media (max-width: 1130px) {
+  .errorContainer {
+    max-width: 970px;
+  }
+}
+@media (max-width: 990px) {
+  .errorContainer {
+    width: 640px;
+  }
+  .textError {
+    font-size: 14px;
+    margin-left: 10px;
+    margin-right: 0px;
+    color: #363636;
+  }
+  .closeError {
+    position: absolute;
+    right: 10px;
+    width: 16px;
+    height: 16px;
+    top: 30px;
+  }
+}
+@media (max-width: 680px) {
+  .errorContainer {
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 560px) {
+  .errorContainer {
+    width: 425px;
+  }
+}
+@media (max-width: 460px) {
+  .errorContainer {
+    width: 288px;
+  }
+  .errorContent {
+    padding: 10px;
+  }
+  .closeError {
+    position: absolute;
+
+    top: 10px;
+  }
+  .errorImg {
+    margin-top: -40px;
+  }
+}

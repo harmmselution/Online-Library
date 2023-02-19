@@ -1,0 +1,192 @@
+.buttons {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.buttons .leftButtons {
+  display: flex;
+  gap: 16px;
+}
+.buttons .leftButtons .searchButton {
+  position: relative;
+}
+.buttons .rightButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.searchInput {
+  box-shadow: 0px 2px 4px rgba(191, 196, 201, 0.2), 0px 3px 4px rgba(191, 196, 201, 0.18), 0px 1px 5px rgba(191, 196, 201, 0.24);
+  border-radius: 599px;
+  border: #ffffff;
+  padding: 10px 143px 10px 40px;
+}
+.searchInput::-moz-placeholder {
+  font-weight: 400;
+  line-height: 18px;
+  width: 220px;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+}
+.searchInput:-ms-input-placeholder {
+  font-weight: 400;
+  line-height: 18px;
+  width: 220px;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+}
+.searchInput::placeholder {
+  font-weight: 400;
+  line-height: 18px;
+  width: 220px;
+  letter-spacing: 0.1px;
+  color: #a7a7a7;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 12px;
+  left: 17px;
+}
+
+.rateButton {
+  line-height: 18px;
+  /* identical to box height, or 129% */
+  cursor: pointer;
+  letter-spacing: 0.1px;
+  /* grey/black 40 */
+  color: #a7a7a7;
+  position: relative;
+  box-shadow: 0px 2px 4px rgba(191, 196, 201, 0.2), 0px 3px 4px rgba(191, 196, 201, 0.18), 0px 1px 5px rgba(191, 196, 201, 0.24);
+  border-radius: 599px;
+  padding: 10px 16px 10px 40px;
+  letter-spacing: 0.1px;
+}
+.rateButton:hover {
+  box-shadow: 0px 3px 4px rgba(222, 125, 11, 0.2), 0px 1px 10px rgba(249, 89, 8, 0.2);
+}
+
+.rate {
+  position: absolute;
+  top: 12.5px;
+  left: 18.5px;
+}
+
+.panelButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  border: #a7a7a7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 2px 4px rgba(191, 196, 201, 0.2), 0px 3px 4px rgba(191, 196, 201, 0.18), 0px 1px 5px rgba(191, 196, 201, 0.24);
+}
+.panelButton:active {
+  box-shadow: 0px 3px 4px rgba(222, 125, 11, 0.2), 0px 1px 10px rgba(249, 89, 8, 0.2);
+  font-weight: 700;
+}
+
+.panelActive {
+  background: linear-gradient(231.58deg, #f83600 -53.35%, #f9d423 297.76%);
+}
+.panelActive svg path {
+  fill: #ffffff;
+}
+
+.squares {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+}
+
+.listButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0px 2px 4px rgba(191, 196, 201, 0.2), 0px 3px 4px rgba(191, 196, 201, 0.18), 0px 1px 5px rgba(191, 196, 201, 0.24);
+  cursor: pointer;
+  border: none;
+}
+.listButton:active {
+  box-shadow: 0px 3px 4px rgba(222, 125, 11, 0.2), 0px 1px 10px rgba(249, 89, 8, 0.2);
+  font-weight: 700;
+}
+.listButton svg {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+}
+
+.listIcon {
+  position: absolute;
+  top: 25%;
+  left: 28%;
+}
+
+@media (max-width: 788px) {
+  .searchInput {
+    box-shadow: 0px 2px 4px rgba(191, 196, 201, 0.2), 0px 3px 4px rgba(191, 196, 201, 0.18), 0px 1px 5px rgba(191, 196, 201, 0.24);
+    border-radius: 599px;
+    border: #ffffff;
+    padding: 10px 67px 10px 40px;
+  }
+  .searchInput::-moz-placeholder {
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    color: #a7a7a7;
+  }
+  .searchInput:-ms-input-placeholder {
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    color: #a7a7a7;
+  }
+  .searchInput::placeholder {
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    color: #a7a7a7;
+  }
+}
+.littleSearch {
+  display: none;
+}
+
+.littleRate {
+  display: none;
+}
+
+@media (max-width: 660px) {
+  .searchButton {
+    display: none;
+  }
+  .littleSearch {
+    display: flex;
+    box-shadow: 0px 2px 4px rgba(191, 196, 201, 0.2), 0px 3px 4px rgba(191, 196, 201, 0.18), 0px 1px 5px rgba(191, 196, 201, 0.24);
+    border-radius: 50%;
+    border: #ffffff;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .rateButton {
+    display: none;
+  }
+  .littleRate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: 0px 2px 4px rgba(191, 196, 201, 0.2), 0px 3px 4px rgba(191, 196, 201, 0.18), 0px 1px 5px rgba(191, 196, 201, 0.24);
+    cursor: pointer;
+  }
+}/*# sourceMappingURL=buttons.module.css.map */

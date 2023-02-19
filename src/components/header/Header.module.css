@@ -1,0 +1,80 @@
+.header {
+  padding-top: 32px;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.link .logoName {
+  color: #363636;
+  font-weight: 550;
+  font-size: 20px;
+}
+
+.leftContainer {
+  display: flex;
+  gap: 126px;
+  align-items: center;
+}
+.leftContainer .library {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  /* identical to box height, or 125% */
+  letter-spacing: 0.1px;
+  color: #363636;
+}
+
+.rightContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar {
+  width: 58px;
+  height: 58px;
+}
+
+.greeting {
+  font-weight: 600;
+  font-size: 14px;
+  font-style: normal;
+  text-align: right;
+  letter-spacing: 0.1px;
+  color: #363636;
+  letter-spacing: 0.1px;
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+@media (max-width: 990px) {
+  .link {
+    display: none;
+  }
+  .burger {
+    display: block;
+  }
+}
+@media (max-width: 788px) {
+  .greeting {
+    display: none;
+  }
+  .avatar {
+    display: none;
+  }
+  .leftContainer {
+    gap: 26px;
+  }
+}/*# sourceMappingURL=Header.module.css.map */
