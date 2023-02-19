@@ -1,7 +1,6 @@
 import styles from '../../../pages/book--page/book-page.module.scss';
 import goldStar from '../../../assets/goldStar1.svg';
 import whiteStar from '../../../assets/whiteStar.svg';
-import user from '../../../assets/user.svg';
 import { getDate } from '../../date-parser/date-parser';
 
 export function UserRates({ comments }) {
