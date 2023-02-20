@@ -18,11 +18,13 @@ export function NavMenu() {
   };
   const { status } = useSelector((state) => state.booksSlice);
   const { allCategories } = useSelector((state) => state.categoriesSlice);
+  const { allBooks } = useSelector((state) => state.booksSlice);
   const success = status === 'success';
   const navigation = useNavigate();
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
+  const bookQuantity = (bookName) => allBooks.filter((el) => el.categories.includes(bookName)).length;
   return (
     <>
       <div
@@ -78,7 +80,7 @@ export function NavMenu() {
                 onClick={() => dispatch(menuToggle(false))}
               >
                 {category.name}
-                <span className={`${styles.quantity} `}>{category.number}</span>
+                <span className={styles.quantity}>{bookQuantity(category.name)}</span>
               </NavLink>
             ))}
         </div>

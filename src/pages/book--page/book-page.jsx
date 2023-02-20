@@ -14,6 +14,7 @@ import { getShortDate } from '../../components/date-parser/date-parser';
 
 export function BookPage() {
   const { isRatesOpen } = useSelector((store) => store.burgerSlice);
+  const stringSeparator = ' ';
   const dispatch = useDispatch();
   const onChangeRatesStatus = () => {
     dispatch(changeRatesStatus(!isRatesOpen));
@@ -30,7 +31,9 @@ export function BookPage() {
         <div className={styles.greyContainer}>
           <p className={styles.greyText}>
             {status === 'success' ? (
-              book.categories.map((category) => <span key={`${category} - ${book.id}`}>{category} книги</span>)
+              book.categories.map((category) => (
+                <span key={`${category} - ${book.id}`}>{category + stringSeparator}</span>
+              ))
             ) : (
               <span> {bookCategory} книги</span>
             )}
