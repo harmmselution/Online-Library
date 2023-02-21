@@ -18,6 +18,9 @@ body {
   letter-spacing: 0.1px;
   overflow-x: hidden;
 }
+.highlight {
+  background-color: #ff5253;
+}
 .outlet-wrapper {
   display: flex;
   padding-top: 71px;
