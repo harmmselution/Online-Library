@@ -23,6 +23,7 @@ export function Buttons({ isPanel, setIsPanel }) {
     dispatch(bookSearch(text.toLowerCase()));
   };
   console.log(allBooks);
+
   return (
     status === 'success' && (
       <div className={styles.buttons}>
@@ -60,7 +61,7 @@ export function Buttons({ isPanel, setIsPanel }) {
           >
             <img src={search} alt='littleSearch' />
           </div>
-          <div className={`${styles.rateButton}`}>
+          <div className={`${styles.rateButton}`} aria-hidden='true'>
             По рейтингу
             <img src={rate} alt='rating' className={styles.rate} />
           </div>

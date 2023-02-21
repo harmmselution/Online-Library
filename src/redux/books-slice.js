@@ -24,6 +24,9 @@ export const booksSlice = createSlice({
       const st = state;
       st.userInput = action.payload;
     },
+    sortByRating: (state, action) => {
+      const st = state;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchBooks.pending, (state) => {

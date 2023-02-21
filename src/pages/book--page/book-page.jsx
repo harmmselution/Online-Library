@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBook } from '../../redux/book-slice';
 import styles from './book-page.module.scss';
@@ -19,12 +19,19 @@ export function BookPage() {
   const onChangeRatesStatus = () => {
     dispatch(changeRatesStatus(!isRatesOpen));
   };
+  const navigate = useNavigate();
+
   const { id, category } = useParams();
   const bookCategory = category;
   const { book, status } = useSelector((state) => state.bookSlice);
+  const { allCategories } = useSelector((state) => state.categoriesSlice);
+
   useEffect(() => {
     dispatch(fetchBook(id));
   }, [dispatch, id]);
+
+  const currentCategory = allCategories.find((el) => el.name === bookCategory);
+
   return (
     <>
       <div className={styles.greyComponent}>
@@ -32,7 +39,14 @@ export function BookPage() {
           <p className={styles.greyText}>
             {status === 'success' ? (
               book.categories.map((category) => (
-                <span key={`${category} - ${book.id}`}>{category + stringSeparator}</span>
+                <span
+                  className={styles.breadcrumbs}
+                  key={`${category} - ${book.id}`}
+                  aria-hidden='true'
+                  onClick={() => navigate(`/books/${currentCategory.path}`)}
+                >
+                  {category + stringSeparator}
+                </span>
               ))
             ) : (
               <span> {bookCategory} книги</span>

@@ -46,7 +46,9 @@ export function NavMenu() {
           data-test-id={isBurgerOpen ? 'burger-showcase' : 'navigation-showcase'}
         >
           <div
-            className={location.pathname.includes('/books') ? styles.active : styles.contract}
+            className={
+              location.pathname.includes('/books') ? `${styles.active} ${styles.activeShowCase}` : styles.contract
+            }
             aria-hidden='true'
             onClick={() =>
               location.pathname.includes('/rules')
@@ -55,12 +57,12 @@ export function NavMenu() {
             }
           >
             Витрина книг
+            {location.pathname.includes('/books') ? (
+              <div className={isMenuOpen ? styles.menuArrow : styles.arrowDown}>{ListArrowIcon}</div>
+            ) : (
+              <div>{}</div>
+            )}
           </div>
-          {location.pathname.includes('/books') ? (
-            <div className={isMenuOpen ? styles.menuArrow : styles.arrowDown}>{ListArrowIcon}</div>
-          ) : (
-            <div>{}</div>
-          )}
         </div>
         <div className={success && isMenuOpen ? styles.categoriesContainer : styles.noContainer}>
           <NavLink

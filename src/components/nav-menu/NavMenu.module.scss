@@ -38,7 +38,9 @@
   font-size: 18px;
   line-height: 24px;
 }
-
+.activeShowCase {
+  position: relative;
+}
 .allBooks {
   font-weight: 700;
   font-size: 18px;
@@ -121,7 +123,7 @@
 .menuArrow {
   position: absolute;
   left: 220px;
-  top: 10px;
+  top: 5px;
   svg {
     color: #ff740f;
   }
@@ -129,7 +131,7 @@
 .arrowDown {
   position: absolute;
   left: 220px;
-  top: 10px;
+  top: 0px;
   svg {
     color: #ff740f;
   }
@@ -176,7 +178,7 @@
   }
   .navBurgerMenu .active {
     padding-left: 32px;
-    padding-top: 32px;
+    margin-top: 32px;
   }
   .navBurgerMenu a {
     padding-left: 52px;

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import styles from './card-container.module.scss';
 import { Card } from '../card/card';
 import { fetchBooks } from '../../redux/books-slice';
@@ -23,11 +23,15 @@ export function CardContainer({ isPanel }) {
       : allBooks
           .filter((book) => book.categories.includes(selectedCategory?.name))
           .filter((book) => book.title.toLowerCase().includes(userInput.toLowerCase()));
+  const location = useLocation();
+  if (allBooks.filter((book) => !book.title.toLowerCase().includes(userInput.toLowerCase())) && userInput !== '') {
+    return <h1>По запросу ничего не найдено.</h1>;
+  }
   return (
     <>
       {status === 'success' && (
         <div className={styles.cardContainer}>
-          {filteredBooks.length === 0 ? (
+          {filteredBooks.length === 0 && !location.pathname.includes('/books/all') ? (
             <div className={styles.noBooks}>В этой категории книг ещё нет</div>
           ) : (
             filteredBooks.map((book) => <Card key={book.id} book={book} isPanel={isPanel} />)
