@@ -53,9 +53,6 @@
   border-radius: 599px;
   border: #ffffff;
   padding: 7px 111px 7px 16px;
-  /* width: 274px;
-  height: 40px; */
-
   &::placeholder {
     font-weight: 400;
     line-height: 18px;
@@ -63,8 +60,8 @@
     letter-spacing: 0.1px;
     color: #a7a7a7;
   }
+  caret-color: #f83600;
   &:focus {
-    color: #ff740f;
     border: #ffffff;
     outline: 0;
     outline-offset: 0;

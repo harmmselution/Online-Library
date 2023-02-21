@@ -13,7 +13,6 @@ export function Buttons({ isPanel, setIsPanel }) {
   const dispatch = useDispatch();
   const formRef = useRef();
   const [isFocus, setIsFocus] = useState(false);
-  // const [value, setValue] = useState('');
   const onChangeSearchStatus = () => {
     dispatch(changeSearchStatus(!isSearchOpen));
     setIsFocus(false);
