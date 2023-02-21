@@ -6,20 +6,24 @@ import rate from '../../assets/rate.svg';
 import { ListSvg, PanelSvg } from '../svgs/svgs';
 import { changeSearchStatus } from '../../redux/burger-slice';
 import closeSearch from '../../assets/closeSearch.svg';
+import { bookSearch, changeUserInput } from '../../redux/books-slice';
 
 export function Buttons({ isPanel, setIsPanel }) {
   const { isSearchOpen } = useSelector((store) => store.burgerSlice);
   const dispatch = useDispatch();
   const formRef = useRef();
   const [isFocus, setIsFocus] = useState(false);
-  const [value, setValue] = useState('');
+  // const [value, setValue] = useState('');
   const onChangeSearchStatus = () => {
     dispatch(changeSearchStatus(!isSearchOpen));
     setIsFocus(false);
-    setValue('');
   };
-  const { allBooks, status } = useSelector((state) => state.booksSlice);
-
+  const { allBooks, status, userInput } = useSelector((state) => state.booksSlice);
+  const onChangeValue = (text) => {
+    dispatch(changeUserInput(text));
+    dispatch(bookSearch(text.toLowerCase()));
+  };
+  console.log(allBooks);
   return (
     status === 'success' && (
       <div className={styles.buttons}>
@@ -30,8 +34,9 @@ export function Buttons({ isPanel, setIsPanel }) {
               placeholder='Поиск книги или автора...'
               className={isSearchOpen ? styles.openedInput : styles.searchInput}
               onFocus={() => setIsFocus(true)}
-              onChange={(e) => setValue(e.target.value)}
-              value={value}
+              onBlur={() => setIsFocus(false)}
+              onChange={(e) => onChangeValue(e.target.value)}
+              value={userInput}
               ref={formRef}
               data-test-id='input-search'
             />
@@ -45,7 +50,7 @@ export function Buttons({ isPanel, setIsPanel }) {
                 data-test-id='button-search-close'
               />
             ) : (
-              <img src={search} alt='search' className={styles.searchIcon} />
+              <img src={search} alt='search' className={isFocus ? styles.inFocusSearch : styles.searchIcon} />
             )}
           </div>
           <div

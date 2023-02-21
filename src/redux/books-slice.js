@@ -9,11 +9,22 @@ export const fetchBooks = createAsyncThunk('allBooks/fetchBooks', async () => {
 const initialState = {
   allBooks: [],
   status: '',
+  userInput: '',
 };
 
 export const booksSlice = createSlice({
   name: 'allBooks',
   initialState,
+  reducers: {
+    bookSearch: (state, action) => {
+      let st = state;
+      st = st.allBooks.filter((book) => book.title === action.payload);
+    },
+    changeUserInput: (state, action) => {
+      const st = state;
+      st.userInput = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchBooks.pending, (state) => {
       const st = state;
@@ -34,4 +45,4 @@ export const booksSlice = createSlice({
 });
 
 export const { reducer: BooksReducer } = booksSlice;
-export const { changeCategory } = booksSlice.actions;
+export const { changeCategory, bookSearch, changeUserInput } = booksSlice.actions;

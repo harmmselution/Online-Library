@@ -31,11 +31,21 @@
     text-indent: 0px;
   }
   &:focus {
-    color: #ff740f;
     border: #ffffff;
     outline: 0;
     outline-offset: 0;
   }
+  caret-color: #f83600;
+}
+.inFocusSearch {
+  img {
+    path {
+      fill: #ff740f;
+    }
+  }
+  position: absolute;
+  top: 12px;
+  left: 17px;
 }
 .openedInput {
   box-shadow: 0px 2px 4px rgba(191, 196, 201, 0.2), 0px 3px 4px rgba(191, 196, 201, 0.18),

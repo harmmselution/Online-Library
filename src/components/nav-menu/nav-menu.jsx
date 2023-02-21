@@ -56,8 +56,8 @@ export function NavMenu() {
           >
             Витрина книг
           </div>
-          {isMenuOpen || location.pathname.includes('/books') ? (
-            <div className={styles.menuArrow}>{ListArrowIcon}</div>
+          {location.pathname.includes('/books') ? (
+            <div className={isMenuOpen ? styles.menuArrow : styles.arrowDown}>{ListArrowIcon}</div>
           ) : (
             <div>{}</div>
           )}

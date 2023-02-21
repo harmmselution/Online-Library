@@ -11,7 +11,16 @@
 
   color: #a7a7a7;
 }
-
+.noBooks {
+  width: 100%;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  padding-top: 150px;
+  color: #a7a7a7;
+}
 .loader {
   position: absolute;
   background: rgba(54, 54, 54, 0.3);
