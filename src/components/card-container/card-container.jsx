@@ -25,8 +25,8 @@ export function CardContainer({ isPanel }) {
           .filter((book) => book.title.toLowerCase().includes(userInput.toLowerCase()));
   const location = useLocation();
 
-  // if (filteredBooks.filter((book) => !book.title.toLowerCase().includes(userInput.toLowerCase())) && userInput !== '') {
-  //   return <h1>По запросу ничего не найдено.</h1>;
+  // if (filteredBooks.filter((book) => book.title.toLowerCase().includes(userInput.toLowerCase()))) {
+  //   return <h1>По запросу ничего не найдено</h1>;
   // }
   return (
     <>

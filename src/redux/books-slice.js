@@ -24,8 +24,9 @@ export const booksSlice = createSlice({
       const st = state;
       st.userInput = action.payload;
     },
-    sortByRating: (state, action) => {
-      const st = state;
+    sortDescending: (state, action) => {
+      let st = state;
+      st = st.allBooks.sort((a, b) => b.rating - a.rating);
     },
   },
   extraReducers: (builder) => {
@@ -48,4 +49,4 @@ export const booksSlice = createSlice({
 });
 
 export const { reducer: BooksReducer } = booksSlice;
-export const { changeCategory, bookSearch, changeUserInput } = booksSlice.actions;
+export const { changeCategory, bookSearch, changeUserInput, sortDescending } = booksSlice.actions;

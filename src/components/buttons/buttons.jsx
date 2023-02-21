@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './buttons.module.scss';
 import search from '../../assets/search.svg';
 import rate from '../../assets/rate.svg';
-import { ListSvg, PanelSvg } from '../svgs/svgs';
+import { ListSvg, PanelSvg, SearchSvg } from '../svgs/svgs';
 import { changeSearchStatus } from '../../redux/burger-slice';
 import closeSearch from '../../assets/closeSearch.svg';
-import { bookSearch, changeUserInput } from '../../redux/books-slice';
+import { bookSearch, changeUserInput, sortDescending } from '../../redux/books-slice';
 
 export function Buttons({ isPanel, setIsPanel }) {
   const { isSearchOpen } = useSelector((store) => store.burgerSlice);
@@ -50,7 +50,9 @@ export function Buttons({ isPanel, setIsPanel }) {
                 data-test-id='button-search-close'
               />
             ) : (
-              <img src={search} alt='search' className={isFocus ? styles.inFocusSearch : styles.searchIcon} />
+              <div className={isFocus ? styles.inFocusSearch : styles.searchIcon}>
+                <SearchSvg />
+              </div>
             )}
           </div>
           <div
