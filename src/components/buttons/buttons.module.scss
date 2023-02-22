@@ -67,6 +67,12 @@
     outline-offset: 0;
   }
 }
+.rateAsc {
+  transform: rotate(180deg);
+  position: absolute;
+  top: 10px;
+  left: 18.5px;
+}
 .searchIcon {
   position: absolute;
   top: 12px;

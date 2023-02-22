@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './buttons.module.scss';
 import search from '../../assets/search.svg';
 import rate from '../../assets/rate.svg';
-import { ListSvg, PanelSvg, SearchSvg } from '../svgs/svgs';
+import { ListSvg, PanelSvg, RateSvg, SearchSvg } from '../svgs/svgs';
 import { changeSearchStatus } from '../../redux/burger-slice';
 import closeSearch from '../../assets/closeSearch.svg';
 import { bookSearch, changeUserInput, sortAscending, sortDescending } from '../../redux/books-slice';
@@ -29,7 +29,6 @@ export function Buttons({ isPanel, setIsPanel }) {
       dispatch(sortToggler('DESC'));
     } else dispatch(sortToggler('ASC'));
   };
-  console.log(sortType);
 
   return (
     status === 'success' && (
@@ -72,7 +71,10 @@ export function Buttons({ isPanel, setIsPanel }) {
           </div>
           <div className={`${styles.rateButton}`} aria-hidden='true' onClick={sortByRating}>
             По рейтингу
-            <img src={rate} alt='rating' className={styles.rate} />
+            {/* <img src={rate} alt='rating' className={styles.rate} /> */}
+            <div className={sortType === 'DESC' ? styles.rate : styles.rateAsc}>
+              <RateSvg />
+            </div>
           </div>
           <div className={isSearchOpen ? styles.closeButtons : styles.littleRate}>
             <img src={rate} alt='littleRate' />
