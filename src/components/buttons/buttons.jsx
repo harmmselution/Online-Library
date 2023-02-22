@@ -34,7 +34,11 @@ export function Buttons({ isPanel, setIsPanel }) {
     status === 'success' && (
       <div className={styles.buttons}>
         <div className={styles.leftButtons}>
-          <div aria-hidden='true' className={isSearchOpen ? styles.openedSearch : styles.searchButton}>
+          <div
+            aria-hidden='true'
+            className={isSearchOpen ? styles.openedSearch : styles.searchButton}
+            data-test-id='input-search'
+          >
             <input
               type='text'
               placeholder='Поиск книги или автора...'

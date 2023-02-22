@@ -26,20 +26,25 @@ export function CardContainer({ isPanel }) {
           .filter((book) => book.title.toLowerCase().includes(userInput.toLowerCase()));
   const location = useLocation();
 
-  // if (filteredBooks.filter((book) => book.title.toLowerCase().includes(userInput.toLowerCase()))) {
-  //   return <h1>По запросу ничего не найдено</h1>;
-  // }
   return (
     <>
       {status === 'success' && (
         <div className={styles.cardContainer}>
-          {filteredBooks.length === 0 && !location.pathname.includes('/books/all') ? (
-            <div className={styles.noBooks}>В этой категории книг ещё нет</div>
-          ) : (
-            filteredBooks
-              .sort((a, b) => (sortType === 'ASC' ? a.rating - b.rating : b.rating - a.rating))
-              .map((book) => <Card key={book.id} book={book} isPanel={isPanel} />)
-          )}
+          {!filteredBooks.length &&
+            (userInput === '' ? (
+              <h1 data-test-id='empty-category' className={styles.noBooks}>
+                В этой категории книг ещё нет
+              </h1>
+            ) : (
+              <h1 data-test-id='search-result-not-found' className={styles.noBooks}>
+                По запросу ничего не найдено
+              </h1>
+            ))}
+          {filteredBooks
+            .sort((a, b) => (sortType === 'ASC' ? a.rating - b.rating : b.rating - a.rating))
+            .map((book) => (
+              <Card key={book.id} book={book} isPanel={isPanel} />
+            ))}
         </div>
       )}
       {status === 'loading' && <Loader />}
