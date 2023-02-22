@@ -6,7 +6,8 @@ import rate from '../../assets/rate.svg';
 import { ListSvg, PanelSvg, SearchSvg } from '../svgs/svgs';
 import { changeSearchStatus } from '../../redux/burger-slice';
 import closeSearch from '../../assets/closeSearch.svg';
-import { bookSearch, changeUserInput, sortDescending } from '../../redux/books-slice';
+import { bookSearch, changeUserInput, sortAscending, sortDescending } from '../../redux/books-slice';
+import { sortToggler } from '../../redux/sort-slice';
 
 export function Buttons({ isPanel, setIsPanel }) {
   const { isSearchOpen } = useSelector((store) => store.burgerSlice);
@@ -17,12 +18,18 @@ export function Buttons({ isPanel, setIsPanel }) {
     dispatch(changeSearchStatus(!isSearchOpen));
     setIsFocus(false);
   };
-  const { allBooks, status, userInput } = useSelector((state) => state.booksSlice);
+  const { allBooks, status, userInput, descendingBooks, ascendingBooks } = useSelector((state) => state.booksSlice);
+  const { sortType } = useSelector((state) => state.sortSlice);
   const onChangeValue = (text) => {
     dispatch(changeUserInput(text));
     dispatch(bookSearch(text.toLowerCase()));
   };
-  console.log(allBooks);
+  const sortByRating = () => {
+    if (sortType === 'ASC') {
+      dispatch(sortToggler('DESC'));
+    } else dispatch(sortToggler('ASC'));
+  };
+  console.log(sortType);
 
   return (
     status === 'success' && (
@@ -63,7 +70,7 @@ export function Buttons({ isPanel, setIsPanel }) {
           >
             <img src={search} alt='littleSearch' />
           </div>
-          <div className={`${styles.rateButton}`} aria-hidden='true'>
+          <div className={`${styles.rateButton}`} aria-hidden='true' onClick={sortByRating}>
             По рейтингу
             <img src={rate} alt='rating' className={styles.rate} />
           </div>

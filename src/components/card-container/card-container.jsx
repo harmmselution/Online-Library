@@ -10,6 +10,7 @@ export function CardContainer({ isPanel }) {
   const { allBooks, status, userInput } = useSelector((state) => state.booksSlice);
   const state = useSelector((state) => state.bookSlice);
   const { allCategories } = useSelector((state) => state.categoriesSlice);
+  const { sortType } = useSelector((state) => state.sortSlice);
   const bookState = state.status;
   const dispatch = useDispatch();
   useEffect(() => {
@@ -35,7 +36,9 @@ export function CardContainer({ isPanel }) {
           {filteredBooks.length === 0 && !location.pathname.includes('/books/all') ? (
             <div className={styles.noBooks}>В этой категории книг ещё нет</div>
           ) : (
-            filteredBooks.map((book) => <Card key={book.id} book={book} isPanel={isPanel} />)
+            filteredBooks
+              .sort((a, b) => (sortType === 'ASC' ? a.rating - b.rating : b.rating - a.rating))
+              .map((book) => <Card key={book.id} book={book} isPanel={isPanel} />)
           )}
         </div>
       )}

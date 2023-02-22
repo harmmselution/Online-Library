@@ -3,6 +3,7 @@ import { BooksReducer } from './books-slice';
 import { BurgerReducer } from './burger-slice';
 import { BookReducer } from './book-slice';
 import { CategoriesReducer } from './categories-slice';
+import { SortReducer } from './sort-slice';
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     booksSlice: BooksReducer,
     bookSlice: BookReducer,
     categoriesSlice: CategoriesReducer,
+    sortSlice: SortReducer,
   },
 });

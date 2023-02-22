@@ -24,10 +24,6 @@ export const booksSlice = createSlice({
       const st = state;
       st.userInput = action.payload;
     },
-    sortDescending: (state, action) => {
-      let st = state;
-      st = st.allBooks.sort((a, b) => b.rating - a.rating);
-    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchBooks.pending, (state) => {
@@ -49,4 +45,4 @@ export const booksSlice = createSlice({
 });
 
 export const { reducer: BooksReducer } = booksSlice;
-export const { changeCategory, bookSearch, changeUserInput, sortDescending } = booksSlice.actions;
+export const { changeCategory, bookSearch, changeUserInput, sortDescending, sortAscending } = booksSlice.actions;
