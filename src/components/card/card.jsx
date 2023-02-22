@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useParams } from 'react-router-dom';
 import { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './card.module.scss';
@@ -9,19 +9,20 @@ import { Rating } from '../ui/rating/rating';
 import '../../index.css';
 
 export function Card({ book, isPanel }) {
-  const category = book.categories[0];
   const { allBooks, status } = useSelector((state) => state.booksSlice);
   const { userInput } = useSelector((state) => state.booksSlice);
+  const { allCategories } = useSelector((state) => state.categoriesSlice);
 
   function highlightText(text, input) {
     const regex = new RegExp(`(${input})`, 'gi');
-    const highlightedText = text.replace(regex, '<span class="highlight">$1</span>');
+    const highlightedText = text.replace(regex, '<span class="highlight" data-test-id="highlight-matches">$1</span>');
     return <div dangerouslySetInnerHTML={{ __html: highlightedText }} />;
   }
-
+  const params = useParams();
+  console.log(params);
   return (
     <NavLink
-      to={`/books/${category}/${book.id}`}
+      to={`/books/${params.category}/${book.id}`}
       className={isPanel === false ? `${styles.bookHref}` : ''}
       data-test-id='card'
     >
@@ -38,7 +39,9 @@ export function Card({ book, isPanel }) {
             <p className={styles.noRate}>ещё нет оценок</p>
           )}
           <div className={styles.heading}>
-            <h2 className={styles.title}>{highlightText(book.title, userInput)}</h2>
+            <h2 className={styles.title} data-test-id='book-title'>
+              {highlightText(book.title, userInput)}
+            </h2>
             {book.authors.map((author) => (
               <p key={`${author} ${Date.now()}`} className={styles.author}>
                 {author},{book.issueYear}

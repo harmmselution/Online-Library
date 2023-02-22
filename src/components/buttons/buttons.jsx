@@ -41,7 +41,7 @@ export function Buttons({ isPanel, setIsPanel }) {
           >
             <input
               type='text'
-              placeholder='Поиск книги или автора...'
+              placeholder='Поиск книги или автора…'
               className={isSearchOpen ? styles.openedInput : styles.searchInput}
               onFocus={() => setIsFocus(true)}
               onBlur={() => setIsFocus(false)}
@@ -73,9 +73,13 @@ export function Buttons({ isPanel, setIsPanel }) {
           >
             <img src={search} alt='littleSearch' />
           </div>
-          <div className={`${styles.rateButton}`} aria-hidden='true' onClick={sortByRating}>
+          <div
+            className={`${styles.rateButton}`}
+            aria-hidden='true'
+            onClick={sortByRating}
+            data-test-id='sort-rating-button'
+          >
             По рейтингу
-            {/* <img src={rate} alt='rating' className={styles.rate} /> */}
             <div className={sortType === 'DESC' ? styles.rate : styles.rateAsc}>
               <RateSvg />
             </div>

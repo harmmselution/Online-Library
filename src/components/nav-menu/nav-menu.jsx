@@ -80,9 +80,19 @@ export function NavMenu() {
                 className={({ isActive }) => (isActive ? `${styles.activeCategory}` : styles.category)}
                 key={category.path}
                 onClick={() => dispatch(menuToggle(false))}
+                data-test-id={isBurgerOpen ? `burger-${category.path}` : `navigation-${category.path}`}
               >
                 {category.name}
-                <span className={styles.quantity}>{bookQuantity(category.name)}</span>
+                <span
+                  className={styles.quantity}
+                  data-test-id={
+                    isBurgerOpen
+                      ? `burger-book-count-for-${category.name}`
+                      : `navigation-book-count-for-${category.name}`
+                  }
+                >
+                  {bookQuantity(category.name)}
+                </span>
               </NavLink>
             ))}
         </div>

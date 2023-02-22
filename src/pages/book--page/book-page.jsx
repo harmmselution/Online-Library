@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBook } from '../../redux/book-slice';
 import styles from './book-page.module.scss';
@@ -14,7 +14,7 @@ import { getShortDate } from '../../components/date-parser/date-parser';
 
 export function BookPage() {
   const { isRatesOpen } = useSelector((store) => store.burgerSlice);
-  const stringSeparator = ' ';
+  const whiteString = ' ';
   const dispatch = useDispatch();
   const onChangeRatesStatus = () => {
     dispatch(changeRatesStatus(!isRatesOpen));
@@ -22,7 +22,7 @@ export function BookPage() {
   const navigate = useNavigate();
 
   const { id, category } = useParams();
-  const bookCategory = category;
+
   const { book, status } = useSelector((state) => state.bookSlice);
   const { allCategories } = useSelector((state) => state.categoriesSlice);
 
@@ -30,28 +30,44 @@ export function BookPage() {
     dispatch(fetchBook(id));
   }, [dispatch, id]);
 
-  const currentCategory = allCategories.find((el) => el.name === bookCategory);
+  const currentCategory = allCategories.find((el) => el.path === category);
+  const selectedCategoryName = () => {
+    if (category && category === 'all') {
+      return { id: 0, path: 'all', name: 'Все книги' };
+    }
 
+    return allCategories.find((el) => el.path === category);
+  };
   return (
     <>
       <div className={styles.greyComponent}>
         <div className={styles.greyContainer}>
           <p className={styles.greyText}>
-            {status === 'success' ? (
+            {/* {status === 'success' ? (
               book.categories.map((category) => (
                 <span
                   className={styles.breadcrumbs}
                   key={`${category} - ${book.id}`}
                   aria-hidden='true'
                   onClick={() => navigate(`/books/${currentCategory.path}`)}
+                  data-test-id='breadcrumbs-link'
                 >
-                  {category + stringSeparator}
+                  {category + whiteString}
                 </span>
               ))
             ) : (
-              <span> {bookCategory} книги</span>
-            )}
-            <span className={styles.greyChevron}> / </span> {book.title}
+              <span> {category} книги</span>
+            )} */}
+            {/* <span className={styles.greyChevron} data-test-id='book-name'>
+              {' '}
+              /{' '}
+            </span>{' '}
+            {book.title} */}
+            <NavLink to={`/books/${selectedCategoryName().path}`}>
+              {category === 'all' ? 'Все книги' : currentCategory.name}
+            </NavLink>
+            <b>/</b>
+            <span>{book.title || ''}</span>
           </p>
         </div>
       </div>

@@ -32,11 +32,11 @@ export function CardContainer({ isPanel }) {
         <div className={styles.cardContainer}>
           {!filteredBooks.length &&
             (userInput === '' ? (
-              <h1 data-test-id='empty-category' className={styles.noBooks}>
+              <h1 data-test-id='empty-category' className={styles.noResult}>
                 В этой категории книг ещё нет
               </h1>
             ) : (
-              <h1 data-test-id='search-result-not-found' className={styles.noBooks}>
+              <h1 data-test-id='search-result-not-found' className={styles.noResult}>
                 По запросу ничего не найдено
               </h1>
             ))}
