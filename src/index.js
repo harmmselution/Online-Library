@@ -4,8 +4,6 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './index.css';
-import { Footer } from './components/footer/footer.jsx';
-import { Header } from './components/header/header.jsx';
 import { Main } from './pages/main/main.jsx';
 import { Rules } from './pages/rules/rules';
 import { BookPage } from './pages/book--page/book-page';

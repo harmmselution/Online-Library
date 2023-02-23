@@ -63,11 +63,11 @@ export function BookPage() {
               /{' '}
             </span>{' '}
             {book.title} */}
-            <NavLink to={`/books/${selectedCategoryName().path}`}>
+            <NavLink to={`/books/${selectedCategoryName().path}`} data-test-id='breadcrumbs-link'>
               {category === 'all' ? 'Все книги' : currentCategory.name}
             </NavLink>
             <b>/</b>
-            <span>{book.title || ''}</span>
+            <span data-test-id='book-name'>{book.title || ''}</span>
           </p>
         </div>
       </div>
@@ -83,7 +83,9 @@ export function BookPage() {
               )}
             </div>
             <div className={styles.title}>
-              <h2 className={styles.bookName}>{book.title}</h2>
+              <h2 className={styles.bookName} data-test-id='book-title'>
+                {book.title}
+              </h2>
               {book.authors.map((author) => (
                 <p key={`${author} -  ${book.id}`} className={styles.author}>
                   {author}, {book.issueYear}

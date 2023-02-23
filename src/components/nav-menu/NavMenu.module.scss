@@ -4,6 +4,11 @@
   gap: 16px;
   min-width: 279px;
 }
+.categories {
+  display: flex;
+
+  align-items: center;
+}
 .burgerCloseFiend {
   position: fixed;
   left: 0;

@@ -25,6 +25,7 @@ export function NavMenu() {
     dispatch(fetchCategories());
   }, [dispatch]);
   const bookQuantity = (bookName) => allBooks.filter((el) => el.categories.includes(bookName)).length;
+  console.log(allCategories);
   return (
     <>
       <div
@@ -75,25 +76,27 @@ export function NavMenu() {
 
           {isMenuOpen &&
             allCategories.map((category) => (
-              <NavLink
-                to={`/books/${category.path}`}
-                className={({ isActive }) => (isActive ? `${styles.activeCategory}` : styles.category)}
-                key={category.path}
-                onClick={() => dispatch(menuToggle(false))}
-                data-test-id={isBurgerOpen ? `burger-${category.path}` : `navigation-${category.path}`}
-              >
-                {category.name}
+              <div className={styles.categories}>
+                <NavLink
+                  to={`/books/${category.path}`}
+                  className={({ isActive }) => (isActive ? `${styles.activeCategory}` : styles.category)}
+                  key={category.path}
+                  onClick={() => dispatch(menuToggle(false))}
+                  data-test-id={isBurgerOpen ? `burger-${category.path}` : `navigation-${category.path}`}
+                >
+                  {category.name}
+                </NavLink>
                 <span
                   className={styles.quantity}
                   data-test-id={
                     isBurgerOpen
-                      ? `burger-book-count-for-${category.name}`
-                      : `navigation-book-count-for-${category.name}`
+                      ? `burger-book-count-for-${category.path}`
+                      : `navigation-book-count-for-${category.path}`
                   }
                 >
                   {bookQuantity(category.name)}
                 </span>
-              </NavLink>
+              </div>
             ))}
         </div>
 
