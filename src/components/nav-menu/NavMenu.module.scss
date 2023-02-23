@@ -187,11 +187,12 @@
   }
   .navBurgerMenu a {
     padding-left: 52px;
+    max-width: 224px;
   }
   .arrowDown {
     position: absolute;
     left: 220px;
-    top: 10px;
+    top: 5px;
     svg {
       color: #ff740f;
     }

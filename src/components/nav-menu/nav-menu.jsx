@@ -26,6 +26,10 @@ export function NavMenu() {
   }, [dispatch]);
   const bookQuantity = (bookName) => allBooks.filter((el) => el.categories.includes(bookName)).length;
   console.log(allCategories);
+  const burgerStatusToggler = () => {
+    dispatch(menuToggle(false));
+    dispatch(changeBurgerStatus(false));
+  };
   return (
     <>
       <div
@@ -70,6 +74,7 @@ export function NavMenu() {
             to='books/all'
             className={({ isActive }) => (isActive ? `${styles.activeCategory}` : styles.category)}
             data-test-id={isBurgerOpen ? 'burger-books' : 'navigation-books'}
+            onClick={burgerStatusToggler}
           >
             Все книги
           </NavLink>
@@ -81,18 +86,14 @@ export function NavMenu() {
                   to={`/books/${category.path}`}
                   className={({ isActive }) => (isActive ? `${styles.activeCategory}` : styles.category)}
                   key={category.path}
-                  onClick={() => dispatch(menuToggle(false))}
+                  onClick={burgerStatusToggler}
                   data-test-id={isBurgerOpen ? `burger-${category.path}` : `navigation-${category.path}`}
                 >
                   {category.name}
                 </NavLink>
                 <span
                   className={styles.quantity}
-                  data-test-id={
-                    isBurgerOpen
-                      ? `burger-book-count-for-${category.path}`
-                      : `navigation-book-count-for-${category.path}`
-                  }
+                  data-test-id={`${isBurgerOpen ? 'burger' : 'navigation'}-book-count-for-${category.path}`}
                 >
                   {bookQuantity(category.name)}
                 </span>

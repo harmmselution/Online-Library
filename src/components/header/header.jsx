@@ -18,6 +18,7 @@ export function Header() {
     location.pathname.includes('/books/all') ||
     location.pathname.includes('/rules') ||
     location.pathname.includes('/contract');
+
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>

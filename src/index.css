@@ -19,7 +19,7 @@ body {
   overflow-x: hidden;
 }
 .highlight {
-  background-color: rgb(255, 82, 83);
+  color: rgb(255, 82, 83);
 }
 .outlet-wrapper {
   display: flex;
