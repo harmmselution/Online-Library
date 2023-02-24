@@ -8,6 +8,7 @@ import burger from '../../assets/burger.svg';
 import { NavMenu } from '../nav-menu/nav-menu';
 import { changeBurgerStatus } from '../../redux/burger-slice';
 import burgerClose from '../../assets/burgerClose.svg';
+import avatar1 from '../../assets/avatar1.png';
 
 export function Header() {
   const { isBurgerOpen } = useSelector((store) => store.burgerSlice);
@@ -45,7 +46,7 @@ export function Header() {
         </div>
         <div className={styles.rightContainer}>
           <div className={styles.greeting}>Привет, Иван!</div>
-          <img src={avatar} alt='avatar' className={styles.avatar} />
+          <img src={avatar1} alt='avatar' className={styles.avatar} />
         </div>
       </div>
     </header>
