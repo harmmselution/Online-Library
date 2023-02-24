@@ -18,7 +18,7 @@ export function Buttons({ isPanel, setIsPanel }) {
     dispatch(changeSearchStatus(!isSearchOpen));
     setIsFocus(false);
   };
-  const { allBooks, status, userInput, descendingBooks, ascendingBooks } = useSelector((state) => state.booksSlice);
+  const { status, userInput } = useSelector((state) => state.booksSlice);
   const { sortType } = useSelector((state) => state.sortSlice);
   const onChangeValue = (text) => {
     dispatch(changeUserInput(text));
