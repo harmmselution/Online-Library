@@ -25,7 +25,6 @@ export function NavMenu() {
     dispatch(fetchCategories());
   }, [dispatch]);
   const bookQuantity = (bookName) => allBooks.filter((el) => el.categories.includes(bookName)).length;
-  console.log(allCategories);
   const burgerStatusToggler = () => {
     dispatch(menuToggle(false));
     dispatch(changeBurgerStatus(false));

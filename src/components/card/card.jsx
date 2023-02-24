@@ -17,7 +17,7 @@ export function Card({ book, isPanel }) {
     return <div dangerouslySetInnerHTML={{ __html: highlightedText }} />;
   }
   const params = useParams();
-  console.log(params);
+
   return (
     <NavLink
       to={`/books/${params.category}/${book.id}`}
