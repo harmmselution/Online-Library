@@ -9,7 +9,7 @@ import { Loader } from '../loader/loader';
 export function CardContainer({ isPanel }) {
   const { allBooks, status, userInput } = useSelector((state) => state.booksSlice);
   const state = useSelector((state) => state.bookSlice);
-  const { allCategories } = useSelector((state) => state.categoriesSlice);
+  const categoriesState = useSelector((state) => state.categoriesSlice);
   const { sortType } = useSelector((state) => state.sortSlice);
   const bookState = state.status;
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export function CardContainer({ isPanel }) {
     dispatch(fetchBooks());
   }, [dispatch]);
   const { category } = useParams();
-  const selectedCategory = allCategories.find((element) => element.path === category);
+  const selectedCategory = categoriesState.allCategories.find((element) => element.path === category);
   const filteredBooks =
     category === 'all'
       ? allBooks.filter((book) => book.title.toLowerCase().includes(userInput.toLowerCase()))
@@ -47,7 +47,7 @@ export function CardContainer({ isPanel }) {
             ))}
         </div>
       )}
-      {status === 'loading' && <Loader />}
+      {status === 'loading' && categoriesState.status === 'loading' && <Loader />}
     </>
   );
 }

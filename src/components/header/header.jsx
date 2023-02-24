@@ -37,11 +37,11 @@ export function Header() {
             data-test-id='button-burger'
             ref={burgerRef}
           />
-          {!booksPath && (
+          {/* {!booksPath && (
             <div className={styles.navMenuContainer}>
               <NavMenu />
             </div>
-          )}
+          )} */}
           <div className={styles.library}>Библиотека</div>
         </div>
         <div className={styles.rightContainer}>

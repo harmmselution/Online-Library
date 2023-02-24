@@ -16,19 +16,21 @@ export function NavMenu() {
   const handleOutsideClick = () => {
     dispatch(changeBurgerStatus(false));
   };
-  const { status } = useSelector((state) => state.booksSlice);
+  const { status, allBooks } = useSelector((state) => state.booksSlice);
   const { allCategories } = useSelector((state) => state.categoriesSlice);
-  const { allBooks } = useSelector((state) => state.booksSlice);
   const success = status === 'success';
   const navigation = useNavigate();
+
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
+
   const bookQuantity = (bookName) => allBooks.filter((el) => el.categories.includes(bookName)).length;
   const burgerStatusToggler = () => {
-    dispatch(menuToggle(false));
+    // dispatch(menuToggle(false));
     dispatch(changeBurgerStatus(false));
   };
+
   return (
     <>
       <div
@@ -92,7 +94,11 @@ export function NavMenu() {
                 </NavLink>
                 <span
                   className={styles.quantity}
-                  data-test-id={`${isBurgerOpen ? 'burger' : 'navigation'}-book-count-for-${category.path}`}
+                  data-test-id={
+                    isBurgerOpen
+                      ? `burger-book-count-for-${category.path}`
+                      : `navigation-book-count-for-${category.path}`
+                  }
                 >
                   {bookQuantity(category.name)}
                 </span>
