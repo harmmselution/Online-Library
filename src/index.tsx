@@ -1,17 +1,16 @@
 import React from 'react';
-
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './index.css';
-import { Main } from './pages/main/main.jsx';
+import { Main } from './pages/main/main';
 import { Rules } from './pages/rules/rules';
 import { BookPage } from './pages/book--page/book-page';
 import { Layout } from './components/layout/layout';
 import { LayoutMainPage } from './components/layout--main--page/layout-main-page';
 import { store } from './redux/store';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <Provider store={store}>
     <HashRouter>

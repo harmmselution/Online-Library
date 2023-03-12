@@ -1,17 +1,15 @@
-import { Link, NavLink, useParams } from 'react-router-dom';
-import { useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { NavLink, useParams } from 'react-router-dom';
 import styles from './card.module.scss';
 import { getShortDate } from '../date-parser/date-parser';
 import { Rating } from '../ui/rating/rating';
 import '../../index.css';
+import { useAppSelector } from '../../hooks/storeHooks';
+import { ICard } from '../../interfaces/interfaces';
 
-export function Card({ book, isPanel }) {
-  const { allBooks, status } = useSelector((state) => state.booksSlice);
-  const { userInput } = useSelector((state) => state.booksSlice);
-  const { allCategories } = useSelector((state) => state.categoriesSlice);
+export const Card: React.FC<ICard> = ({ book, isPanel }) => {
+  const { userInput } = useAppSelector((state) => state.booksSlice);
 
-  function highlightText(text, input) {
+  function highlightText(text: string, input: string) {
     const regex = new RegExp(`(${input})`, 'gi');
     const highlightedText = text.replace(regex, '<span class="highlight" data-test-id="highlight-matches">$1</span>');
     return <div dangerouslySetInnerHTML={{ __html: highlightedText }} />;
@@ -49,10 +47,6 @@ export function Card({ book, isPanel }) {
             <button type='button' className={styles.engagedBtn}>
               Занята до {getShortDate(book.booking.dateOrder)}
             </button>
-          ) : book.ordered ? (
-            <button type='button' className={styles.orderedBtn}>
-              {book.ordered}
-            </button>
           ) : (
             <button type='button' className={styles.btn}>
               Забронировать
@@ -62,4 +56,4 @@ export function Card({ book, isPanel }) {
       </div>
     </NavLink>
   );
-}
+};

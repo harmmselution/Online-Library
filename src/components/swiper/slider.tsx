@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { FreeMode, Navigation, Pagination, Thumbs } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './Slider.module.scss';
@@ -8,9 +8,10 @@ import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import './swiper.scss';
+import { ISlider } from '../../interfaces/interfaces';
 
-export const Slider = ({ gallery }) => {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+export const Slider: React.FC<ISlider> = ({ gallery }) => {
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const GalleryElements = gallery.map((image) => (
     <SwiperSlide>
       <img
@@ -37,10 +38,10 @@ export const Slider = ({ gallery }) => {
     <div className={styles.swipContainer}>
       <Swiper
         data-test-id='slide-big'
-        style={{
-          '--swiper-navigation-color': '#fff',
-          '--swiper-pagination-color': '#363636',
-        }}
+        // style={{
+        //   '--swiper-navigation-color': '#fff',
+        //   '--swiper-pagination-color': '#363636',
+        // }}
         spaceBetween={0}
         slidesPerView={1}
         navigation={true}
@@ -61,7 +62,7 @@ export const Slider = ({ gallery }) => {
         spaceBetween={0}
         freeMode={true}
         watchSlidesProgress={true}
-        watchSlidesVisibility={true}
+        // watchSlidesVisibility={true}
         modules={[FreeMode, Navigation, Thumbs]}
         className='mySwiper'
       >

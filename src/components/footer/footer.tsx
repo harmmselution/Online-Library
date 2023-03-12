@@ -4,7 +4,7 @@ import inst from '../../assets/inst.svg';
 import linkedin from '../../assets/linkedin.svg';
 import vk from '../../assets/vk.svg';
 
-export function Footer() {
+export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContainer}>
@@ -18,4 +18,4 @@ export function Footer() {
       </div>
     </footer>
   );
-}
+};

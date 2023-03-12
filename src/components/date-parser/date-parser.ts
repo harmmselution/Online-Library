@@ -1,4 +1,4 @@
-export const getDate = (str) => {
+export const getDate = (str: string) => {
   const date = new Date(str);
   const monthArr = [
     'января',
@@ -19,7 +19,7 @@ export const getDate = (str) => {
   return `${day} ${month} ${year}`;
 };
 
-export const getShortDate = (str) => {
+export const getShortDate = (str: string) => {
   const date = new Date(str);
   const day = date.getUTCDate() < 10 ? `0${date.getUTCDate()}` : date.getUTCDate();
   const month = date.getUTCMonth() + 1 < 10 ? `0${date.getUTCMonth() + 1}` : date.getUTCMonth() + 1;

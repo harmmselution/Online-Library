@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from '../../../pages/book--page/book-page.module.scss';
+import { IMoreInfo } from '../../../interfaces/interfaces';
 
-export function MoreInfo({ cover, producer, pages, format, issueYear, publish, weight, ISBN, title }) {
+export const MoreInfo: React.FC<IMoreInfo> = ({ info }) => {
   return (
     <>
       <h3 className={styles.moreInfo}>Подробная информация</h3>
@@ -15,11 +16,11 @@ export function MoreInfo({ cover, producer, pages, format, issueYear, publish, w
             <div className={styles.type}>Формат</div>
           </div>
           <div className={styles.rightContainer1}>
-            <div className={styles.typeName}>{publish}</div>
-            <div className={styles.typeName}>{issueYear}</div>
-            <div className={styles.typeName}>{pages}</div>
-            <div className={styles.typeName}>{cover}</div>
-            <div className={styles.typeName}>{format}</div>
+            <div className={styles.typeName}>{info.publish}</div>
+            <div className={styles.typeName}>{info.issueYear}</div>
+            <div className={styles.typeName}>{info.pages}</div>
+            <div className={styles.typeName}>{info.cover}</div>
+            <div className={styles.typeName}>{info.format}</div>
           </div>
         </div>
         <div className={styles.rightInfo}>
@@ -30,13 +31,13 @@ export function MoreInfo({ cover, producer, pages, format, issueYear, publish, w
             <div className={styles.type}>Изготовитель</div>
           </div>
           <div className={styles.rightContainer}>
-            <div className={styles.typeName}>{title}</div>
-            <div className={styles.typeName}>{weight}</div>
-            <div className={styles.typeName}>{ISBN}</div>
-            <div className={styles.typeName}>{producer}</div>
+            <div className={styles.typeName}>{info.title}</div>
+            <div className={styles.typeName}>{info.weight}</div>
+            <div className={styles.typeName}>{info.ISBN}</div>
+            <div className={styles.typeName}>{info.producer}</div>
           </div>
         </div>
       </section>
     </>
   );
-}
+};

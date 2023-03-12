@@ -1,31 +1,32 @@
 import { useEffect } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import styles from './NavMenu.module.scss';
 import { ListArrowIcon } from '../svgs/svgs';
 import { changeBurgerStatus, menuToggle } from '../../redux/burger-slice';
 import { fetchCategories } from '../../redux/categories-slice';
+import { useAppSelector, useAppDispatch } from '../../hooks/storeHooks';
+import { Status } from '../../enums/enums';
 
-export function NavMenu() {
+export const NavMenu: React.FC = () => {
   const location = useLocation();
-  const { isBurgerOpen, isMenuOpen } = useSelector((store) => store.burgerSlice);
-  const dispatch = useDispatch();
+  const { isBurgerOpen, isMenuOpen } = useAppSelector((store) => store.burgerSlice);
+  const dispatch = useAppDispatch();
   const onMenuToggle = () => {
     dispatch(menuToggle(!isMenuOpen));
   };
   const handleOutsideClick = () => {
     dispatch(changeBurgerStatus(false));
   };
-  const { status, allBooks } = useSelector((state) => state.booksSlice);
-  const { allCategories } = useSelector((state) => state.categoriesSlice);
-  const success = status === 'success';
-  const navigation = useNavigate();
+  const { status, allBooks } = useAppSelector((state) => state.booksSlice);
+  const { allCategories } = useAppSelector((state) => state.categoriesSlice);
 
+  const navigation = useNavigate();
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  const bookQuantity = (bookName) => allBooks.filter((el) => el.categories.includes(bookName)).length;
+  const bookQuantity = (bookName: string) => allBooks.filter((el) => el.categories.includes(bookName)).length;
+
   const burgerStatusToggler = () => {
     // dispatch(menuToggle(false));
     dispatch(changeBurgerStatus(false));
@@ -33,12 +34,7 @@ export function NavMenu() {
 
   return (
     <>
-      <div
-        type='button'
-        aria-hidden='true'
-        onClick={handleOutsideClick}
-        className={isBurgerOpen ? styles.burgerCloseFiend : ''}
-      />
+      <div aria-hidden='true' onClick={handleOutsideClick} className={isBurgerOpen ? styles.burgerCloseFiend : ''} />
 
       <nav
         className={isBurgerOpen ? `${styles.navBurgerMenu}` : `${styles.navMenu}`}
@@ -64,13 +60,15 @@ export function NavMenu() {
           >
             Витрина книг
             {location.pathname.includes('/books') ? (
-              <div className={isMenuOpen ? styles.menuArrow : styles.arrowDown}>{ListArrowIcon}</div>
+              <div className={isMenuOpen ? styles.menuArrow : styles.arrowDown}>
+                <ListArrowIcon />
+              </div>
             ) : (
               <div>{}</div>
             )}
           </div>
         </div>
-        <div className={success && isMenuOpen ? styles.categoriesContainer : styles.noContainer}>
+        <div className={status === Status.SUCCESS && isMenuOpen ? styles.categoriesContainer : styles.noContainer}>
           <NavLink
             to='books/all'
             className={({ isActive }) => (isActive ? `${styles.activeCategory}` : styles.category)}
@@ -82,7 +80,7 @@ export function NavMenu() {
 
           {isMenuOpen &&
             allCategories.map((category) => (
-              <div className={styles.categories}>
+              <div className={styles.categories} key={Math.random() * category.id}>
                 <NavLink
                   to={`/books/${category.path}`}
                   className={({ isActive }) => (isActive ? `${styles.activeCategory}` : styles.category)}
@@ -131,4 +129,4 @@ export function NavMenu() {
       </nav>
     </>
   );
-}
+};

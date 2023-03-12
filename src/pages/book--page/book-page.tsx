@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { NavLink, useNavigate, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useParams } from 'react-router-dom';
 import { fetchBook } from '../../redux/book-slice';
 import styles from './book-page.module.scss';
 import arrow from '../../assets/arrow.svg';
@@ -11,24 +10,25 @@ import { Loader } from '../../components/loader/loader';
 import { MoreInfo } from '../../components/ui/more-info/more-info';
 import { UserRates } from '../../components/ui/user-rates/user-rates';
 import { getShortDate } from '../../components/date-parser/date-parser';
+import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
+import { Status } from '../../enums/enums';
 
-export function BookPage() {
-  const { isRatesOpen } = useSelector((store) => store.burgerSlice);
-  const whiteString = ' ';
-  const dispatch = useDispatch();
+export const BookPage: React.FC = () => {
+  const { isRatesOpen } = useAppSelector((store) => store.burgerSlice);
+  const dispatch = useAppDispatch();
   const onChangeRatesStatus = () => {
     dispatch(changeRatesStatus(!isRatesOpen));
   };
-  const navigate = useNavigate();
 
   const { id, category } = useParams();
-
-  const { book, status } = useSelector((state) => state.bookSlice);
-  const { allCategories } = useSelector((state) => state.categoriesSlice);
-
+  const { book, status } = useAppSelector((state) => state.bookSlice);
+  const { allCategories } = useAppSelector((state) => state.categoriesSlice);
   useEffect(() => {
-    dispatch(fetchBook(id));
+    if (id) {
+      dispatch(fetchBook(id));
+    }
   }, [dispatch, id]);
+  //??
 
   const currentCategory = allCategories.find((el) => el.path === category);
   const selectedCategoryName = () => {
@@ -38,41 +38,22 @@ export function BookPage() {
 
     return allCategories.find((el) => el.path === category);
   };
+
   return (
     <>
       <div className={styles.greyComponent}>
         <div className={styles.greyContainer}>
           <p className={styles.greyText}>
-            {/* {status === 'success' ? (
-              book.categories.map((category) => (
-                <span
-                  className={styles.breadcrumbs}
-                  key={`${category} - ${book.id}`}
-                  aria-hidden='true'
-                  onClick={() => navigate(`/books/${currentCategory.path}`)}
-                  data-test-id='breadcrumbs-link'
-                >
-                  {category + whiteString}
-                </span>
-              ))
-            ) : (
-              <span> {category} книги</span>
-            )} */}
-            {/* <span className={styles.greyChevron} data-test-id='book-name'>
-              {' '}
-              /{' '}
-            </span>{' '}
-            {book.title} */}
-            <NavLink to={`/books/${selectedCategoryName().path}`} data-test-id='breadcrumbs-link'>
-              {category === 'all' ? 'Все книги' : currentCategory.name}
+            <NavLink to={`/books/${selectedCategoryName()?.path}`} data-test-id='breadcrumbs-link'>
+              {category === 'all' ? 'Все книги' : currentCategory?.name}
             </NavLink>
             <b>/</b>
-            <span data-test-id='book-name'>{book.title || ''}</span>
+            <span data-test-id='book-name'>{book?.title || ''}</span>
           </p>
         </div>
       </div>
 
-      {status === 'success' && (
+      {status === Status.SUCCESS && book && (
         <>
           <div className={styles.container}>
             <div className={styles.book}>
@@ -92,8 +73,8 @@ export function BookPage() {
                 </p>
               ))}
 
-              <button type='button' className={book?.booking?.order ? styles.bookedButton : styles.orderButton}>
-                {book?.booking?.order ? `Занята до ${getShortDate(book.booking.dateOrder)}` : 'Забронировать'}
+              <button type='button' className={book.booking?.order ? styles.bookedButton : styles.orderButton}>
+                {book.booking?.order ? `Занята до ${getShortDate(book.booking.dateOrder)}` : 'Забронировать'}
               </button>
             </div>
             <div className={styles.about}>
@@ -115,7 +96,7 @@ export function BookPage() {
               )}
             </div>
           </section>
-          <MoreInfo {...book} />
+          <MoreInfo info={{ ...book }} />
           <section className={styles.ratingSection}>
             <h3 className={styles.feedbacks}>
               Отзывы <span className={styles.number2}>{book.comments ? book.comments.length : 0}</span>
@@ -136,7 +117,7 @@ export function BookPage() {
         </>
       )}
 
-      {status === 'loading' && <Loader />}
+      {status === Status.LOADING && <Loader />}
     </>
   );
-}
+};

@@ -2,8 +2,9 @@ import styles from '../../../pages/book--page/book-page.module.scss';
 import goldStar from '../../../assets/goldStar1.svg';
 import whiteStar from '../../../assets/whiteStar.svg';
 import { getDate } from '../../date-parser/date-parser';
+import { IUserComments } from '../../../interfaces/interfaces';
 
-export function UserRates({ comments }) {
+export const UserRates: React.FC<IUserComments> = ({ comments }) => {
   return (
     <div className={styles.rateContainer}>
       {comments.map((comment) => (
@@ -27,4 +28,4 @@ export function UserRates({ comments }) {
       ))}
     </div>
   );
-}
+};

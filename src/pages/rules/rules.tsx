@@ -1,8 +1,7 @@
 import styles from './rules.module.scss';
-import { Header } from '../../components/header/header';
-import { NavMenu } from '../../components/nav-menu/nav-menu';
+import { IRules } from '../../interfaces/interfaces';
 
-export function Rules({ contentView }) {
+export const Rules: React.FC<IRules> = ({ contentView }) => {
   return (
     <div className={styles.rulesContainer}>
       <div className={styles.textContainer}>
@@ -118,4 +117,4 @@ export function Rules({ contentView }) {
       </div>
     </div>
   );
-}
+};

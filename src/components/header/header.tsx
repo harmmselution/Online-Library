@@ -1,19 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import styles from './Header.module.scss';
 import logo from '../../assets/clever.svg';
-import avatar from '../../assets/avatar.svg';
 import burger from '../../assets/burger.svg';
 import { NavMenu } from '../nav-menu/nav-menu';
 import { changeBurgerStatus } from '../../redux/burger-slice';
 import burgerClose from '../../assets/burgerClose.svg';
 import avatar1 from '../../assets/avatar1.png';
+import { useAppSelector, useAppDispatch } from '../../hooks/storeHooks';
 
-export function Header() {
-  const { isBurgerOpen } = useSelector((store) => store.burgerSlice);
-  const dispatch = useDispatch();
-  const burgerRef = useRef();
+export const Header: React.FC = () => {
+  const { isBurgerOpen } = useAppSelector((store) => store.burgerSlice);
+  const dispatch = useAppDispatch();
   const location = useLocation();
   const booksPath =
     location.pathname.includes('/books/all') ||
@@ -35,13 +32,12 @@ export function Header() {
             onClick={() => dispatch(changeBurgerStatus(!isBurgerOpen))}
             aria-hidden='true'
             data-test-id='button-burger'
-            ref={burgerRef}
           />
-          {/* {!booksPath && (
+          {!booksPath && (
             <div className={styles.navMenuContainer}>
               <NavMenu />
             </div>
-          )} */}
+          )}
           <div className={styles.library}>Библиотека</div>
         </div>
         <div className={styles.rightContainer}>
@@ -51,4 +47,4 @@ export function Header() {
       </div>
     </header>
   );
-}
+};
